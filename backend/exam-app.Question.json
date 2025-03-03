@@ -1,0 +1,35 @@
+[{
+  "_id": {
+    "$oid": "67be601df02ab1a6974d3cc1"
+  },
+  "question": "Your company has serval departments. Each department has a number of virtual machines (VMs).<br>The company has an Azure subscription that contains a resource group named RG1.<br>All VMs are located in RG1.<br>You want to associate each VM with its respective department.<br>What should you do?",
+  "answers": [
+    "A. Create Azure Management Groups for each department.",
+    "B. Create a resource group for each department.",
+    "C. Assign tags to the virtual machines.",
+    "D. Modify the settings of the virtual machines."
+  ],
+  "correctAnswers": [
+    "C. Assign tags to the virtual machines."
+  ],
+  "answerType": "single"
+},
+{
+  "_id": {
+    "$oid": "67be601df02ab1a6974d3cc2"
+  },
+  "question": "Note: The question is included in a number of questions that depicts the identical set-up. However, every question has a distinctive result. Establish if the solution satisfies the requirements.\nYour company has an Azure Active Directory (Azure AD) subscription.\nYou want to implement an Azure AD conditional access policy.\nThe policy must be configured to require members of the Global Administrators group to use Multi-Factor Authentication and an Azure AD-joined device when they connect to Azure AD from untrusted locations.\nSolution: You access the multi-factor authentication page to alter the user settings.\nDoes the solution meet the goal?",
+  "answers": [
+    "A. Yes",
+    "B. No"
+  ],
+  "correctAnswers": [
+    "B. No"
+  ],
+  "answerType": "single"
+}]
+
+//"question": "Note: The question is included in a number of questions that depicts the identical set-up. However, every question has a distinctive result. Establish if the solution satisfies the requirements.\nYour company has an Azure Active Directory (Azure AD) subscription.\nYou want to implement an Azure AD conditional access policy.\nThe policy must be configured to require members of the Global Administrators group to use Multi-Factor Authentication and an Azure AD-joined device when they connect to Azure AD from untrusted locations.\nSolution: You access the multi-factor authentication page to alter the user settings.\nDoes the solution meet the goal?",
+//"answers": "A. Yes\nB. No",
+//"correctAnswers": "B. No",
+//"answerType": "single"
