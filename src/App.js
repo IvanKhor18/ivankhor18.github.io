@@ -14,17 +14,23 @@ function App() {
   }, []);
 
   const handleAnswerSelection = (answerId) => {
-    setUserAnswers(prevState => ({
-      ...prevState,
-      [currentQuestionIndex]: answerId
-    }));
+    // For multiple answer questions, add/remove answerId to/from userAnswers
+    setUserAnswers(prevState => {
+      const currentAnswers = prevState[currentQuestionIndex] || [];
+      if (currentAnswers.includes(answerId)) {
+        return {
+          ...prevState,
+          [currentQuestionIndex]: currentAnswers.filter(id => id !== answerId)
+        };
+      } else {
+        return {
+          ...prevState,
+          [currentQuestionIndex]: [...currentAnswers, answerId]
+        };
+      }
+    });
   };
-
   const handleSubmit = () => {
-    if (userAnswers[currentQuestionIndex] === undefined) {
-      alert("Please select an answer before submitting.");
-      return;
-    }
     setShowAnswer(true);
   };
 
@@ -45,21 +51,21 @@ function App() {
       <h1>Question {currentQuestionIndex + 1} of {questions.length}</h1>
       <div>
         <p>{currentQuestion?.question}</p>
-        {currentQuestion?.answers.map((answers, index) => (
-          <div key={index}>
-            <input
-              type={currentQuestion.answerType === 'single' ? 'radio' : 'checkbox'}
+        {currentQuestion?.answers.map((answer) => (
+          <div key={answer.id}>
+            <input type={currentQuestion.answerType === 'single' ? 'radio' : 'checkbox'}
               name="answer"
-              id={answers.id}
-              value={answers.id}
-              onChange={() => handleAnswerSelection(answers.id)}
-              checked={userAnswers[currentQuestionIndex] === answers.id}
+              id={answer.id}
+              value={answer.id}
+              onChange={() => handleAnswerSelection(answer.id)}
+              checked={userAnswers[currentQuestionIndex]?.includes(answer.id)}
             />
-            <label htmlFor={answers.id}>{answers.text}</label>
+            <label htmlFor={answer.id}>{answer.text}</label>
           </div>
         ))}
       </div>
-      <button onClick={handleSubmit} disabled={userAnswers[currentQuestionIndex] === undefined}>Submit</button>
+      <button onClick={handleSubmit} disabled={userAnswers[currentQuestionIndex]?.length === 0}>Submit</button>
+
       {showAnswer && (
         <div>
           {currentQuestion.answers.map((answer) => (
@@ -69,6 +75,7 @@ function App() {
           ))}
         </div>
       )}
+
       <div>
         <button onClick={handlePreviousQuestion} disabled={currentQuestionIndex === 0}>Previous Question</button>
         <button onClick={handleNextQuestion} disabled={currentQuestionIndex === questions.length - 1}>Next Question</button>

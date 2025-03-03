@@ -35,4 +35,23 @@
   to {
     transform: rotate(360deg);
   }
+
+  input[type="radio"],
+  input[type="checkbox"] {
+    margin-right: 10px;
+  }
+  
+  button {
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+
+  button:disabled {
+    background-color: #ddd;
+    cursor: not-allowed;
+  }
 }
